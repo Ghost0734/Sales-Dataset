@@ -1,36 +1,78 @@
 # Sales Dataset Case Project
 
-## Project Overview
-This project analyzes sales data to uncover insights into sales performance and trends. The objective is to improve sales strategies based on data-driven findings.
+## Overview
 
-## Dataset Description
-The dataset contains various attributes related to sales, including product IDs, customer demographics, sales amounts, and timestamps of transactions. It provides a comprehensive look at sales over a specified period.
+This project analyzes the relationship between advertising spending across TV, Radio, and Newspaper channels and their impact on sales. Using linear regression, we build a predictive model to understand which advertising channels are most effective at driving sales.
 
-## Objectives
-- Analyze sales performance by product and category.
-- Identify trends in customer purchasing behavior.
-- Provide actionable insights for improving sales strategies.
+## Dataset
 
-## Key Findings
-- Certain products consistently outperform others in sales volume.
-- Seasonal trends affect purchasing behavior significantly.
-- Customer demographics play a crucial role in the types of products purchased.
+The dataset contains advertising expenditure data and corresponding sales figures:
+
+- **TV** - Television advertising spending (in thousands of dollars)
+- **Radio** - Radio advertising spending (in thousands of dollars)
+- **Newspaper** - Newspaper advertising spending (in thousands of dollars)
+- **Sales** - Total sales revenue (in thousands of dollars)
+
+## What This Project Does
+
+1. **Correlation Analysis** - Measures how strongly each advertising channel correlates with sales
+2. **Predictive Modeling** - Builds a linear regression model to predict sales based on ad spending
+3. **Model Evaluation** - Compares model performance using different combinations of advertising channels
+4. **Sales Prediction** - Makes sales predictions for new advertising expenditure scenarios
+
+## Key Results
+
+### Correlation with Sales
+
+- TV: 0.9012 (strongest correlation)
+- Radio: 0.3497 (moderate correlation)
+- Newspaper: 0.1580 (weak correlation)
+
+TV advertising shows the strongest relationship with sales, followed by Radio and then Newspaper.
+
+### Model Performance
+
+**Full Model (All 3 channels):**
+- R² Score: 0.90
+- MSE: 2.71
+- The model explains 90% of the variance in sales
+
+**Limited Model (Radio & Newspaper only):**
+- R² Score: 0.12
+- MSE: 24.35
+- Without TV, the model performs poorly
+
+The significant drop in performance when TV is excluded demonstrates its critical importance as a predictor of sales.
+
+### Prediction Example
+
+For advertising spending of TV: $200K, Radio: $40K, Newspaper: $50K, the model predicts sales of $19.81K.
 
 ## Technologies Used
-- Python for data analysis and visualization.
-- Pandas for data manipulation.
-- Matplotlib and Seaborn for data visualization.
-- Jupyter Notebook for interactive analysis.
 
-## Methodology
-1. **Data Collection**: Gathered sales data from various sources.
-2. **Data Cleaning**: Processed the data to handle missing values and outliers.
-3. **Exploratory Data Analysis (EDA)**: Conducted EDA to identify patterns and insights.
-4. **Modeling**: Utilized statistical methods to predict future sales trends.
-5. **Documentation**: Compiled findings into a comprehensive report.
+- Python 3
+- Pandas - Data manipulation
+- NumPy - Numerical computations
+- scikit-learn - Machine learning (LinearRegression, SimpleImputer, StandardScaler)
+- Matplotlib - Data visualization
+
+## Project Structure
+
+- `Sales_Dataset_Case_Project.ipynb` - Main Jupyter notebook with all analysis and code
+- `advertising_sales_data.xlsx` - Dataset file
+- `README.md` - Project documentation
+
+## How to Run
+
+1. Open the Jupyter notebook in Google Colab or locally
+2. Upload the `advertising_sales_data.xlsx` file when prompted
+3. Run each cell sequentially to:
+   - Load and explore the data
+   - Calculate correlations
+   - Train the regression model
+   - View model performance metrics
+   - Generate sales predictions
 
 ## Conclusions
-Through this analysis, we gained valuable insights into sales trends and customer behavior, which can help the organization refine its sales strategies and improve overall performance.
 
----
-*Document created on 2026-02-15 11:22:12 UTC*
+TV advertising is the most effective channel for driving sales with a correlation of 0.90. The full model using all three channels provides reliable predictions with an R² of 0.90. Radio and Newspaper advertising have minimal impact on sales when used alone, highlighting the importance of TV in an advertising strategy.
